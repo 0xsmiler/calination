@@ -22,6 +22,12 @@ function Footer() {
             >
               Terms of Service
             </a>
+            <a 
+              href="mailto:help@calinationtoken.com" 
+              className="text-white hover:text-gray-300 transition"
+            >
+              Contact Us
+            </a>
           </div>
           
           <div className="text-white">

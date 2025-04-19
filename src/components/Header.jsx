@@ -90,6 +90,12 @@ function Header({ transparent = false }) {
           >
             WHITEPAPER
           </a>
+          <a
+            href="mailto:help@calinationtoken.com"
+            className={`${transparent ? "text-white" : "text-[#000000]"} hover:text-blue-300 text-[16px] font-medium`}
+          >
+            CONTACT US
+          </a>
         </div>
 
         <div>
@@ -153,6 +159,13 @@ function Header({ transparent = false }) {
               onClick={() => setMobileMenuOpen(false)}
             >
               WHITEPAPER
+            </a>
+            <a
+              href="mailto:help@calinationtoken.com"
+              className="text-[#000000] hover:text-blue-800 text-[16px] font-medium py-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              CONTACT US
             </a>
             <button
               className={`

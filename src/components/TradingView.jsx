@@ -51,9 +51,9 @@ export const TradingView = () => {
     // Use different chart configurations for mobile vs desktop
     if (isMobile) {
       // Use the simplest, most compatible chart configuration for mobile
-      return "https://www.dextools.io/app/en/solana/pair-explorer/CvMmJj7Cbx73yGPtuDCq9DKNAE4sFuuR5q26w9562x8Y?embed=1&simple=1&theme=light&chartType=1";
+      return "https://www.dextools.io/widget-chart/en/solana/pe-light/CvMmJj7Cbx73yGPtuDCq9DKNAE4sFuuR5q26w9562x8Y?embed=1&simple=1&theme=light&chartType=1";
     }
-    return "https://www.dextools.io/app/en/solana/pair-explorer/CvMmJj7Cbx73yGPtuDCq9DKNAE4sFuuR5q26w9562x8Y?embed=1&theme=light";
+    return "https://www.dextools.io/widget-chart/en/solana/pe-light/CvMmJj7Cbx73yGPtuDCq9DKNAE4sFuuR5q26w9562x8Y?theme=light&chartType=2&chartResolution=30&drawingToolbars=false";
   };
 
   return (

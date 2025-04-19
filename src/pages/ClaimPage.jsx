@@ -81,7 +81,7 @@ function ClaimNFT() {
             <div id="claimNFT" className="bg-gradient-to-b from-[#1B2339] via-[#131522] to-[#212437]/90 pt-[88px]">
                 <section className="pb-[120px]">
                     <div className={`relative z-20 ${isError ? 'h-[440px]' : 'h-[840px] max-md:h-[1350px]'} w-full flex flex-col justify-center items-center text-center px-4`}>
-                        <h1 className="text-white text-6xl font-bold mt-[100px] max-lg:text-5xl max-md:text-4xl max-sm:text-[46px]">
+                        <h1 className="text-white text-6xl font-bold mt-[120px] max-lg:text-5xl max-md:text-4xl max-sm:text-[46px]">
                             EXPLORE NFT COLLECTION
                         </h1>
                         <img
@@ -91,7 +91,7 @@ function ClaimNFT() {
                         />
                         
                         <div>
-                            <div className="mt-20 flex max-md:relative max-md:flex-col gap-4">
+                            <div className="mt-20 flex max-md:relative max-md:flex-col gap-4 justify-center items-center">
                                 {cards.map((card, index) => (
                                     <Card
                                         key={index}
@@ -105,7 +105,7 @@ function ClaimNFT() {
                             {!isConnected ? (
                                 <button
                                     onClick={handleConnect}
-                                    className='bg-[#C68F00] mt-20 py-[12px] text-[18px] uppercase text-white px-[80px] hover:bg-[#C68F00]/80 hover:scale-105 transition-all duration-300 rounded-[6px]'
+                                    className='bg-[#C68F00] mt-10 py-[12px] text-[18px] uppercase text-white px-[80px] hover:bg-[#C68F00]/80 hover:scale-105 transition-all duration-300 rounded-[6px]'
                                 >
                                     Connect to Claim
                                 </button>
@@ -113,7 +113,7 @@ function ClaimNFT() {
                                 <button
                                     onClick={handleClaim}
                                     disabled={selectedCards.length === 0}
-                                    className={`mt-20 py-[12px] text-[18px] uppercase text-white px-[80px] hover:scale-105 transition-all duration-300 rounded-[6px] ${selectedCards.length === 0
+                                    className={`mt-10 py-[12px] text-[18px] uppercase text-white px-[80px] hover:scale-105 transition-all duration-300 rounded-[6px] ${selectedCards.length === 0
                                         ? 'bg-[#C68F00]/60 cursor-not-allowed'
                                         : 'bg-[#C68F00] hover:bg-[#C68F00]/80'
                                         }`}

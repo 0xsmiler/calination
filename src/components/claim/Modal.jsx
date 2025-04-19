@@ -7,17 +7,17 @@ import nftAbi from '../../contracts/nftAbi.json';
 const contractAddress = import.meta.env.VITE_NFT_CONTRACT_ADDRESS;
 const contractAbi = nftAbi;
 
-const ModalCard = ({ image, title, price }) => {
+const ModalCard = ({ image, title, nftName, price }) => {
     return (
         <div className="rounded-lg overflow-hidden">
             <img
-                alt={`NFT ${title}`}
+                alt={nftName || `NFT ${title}`}
                 src={image}
                 className="w-full max-md:w-[250px] h-48 object-cover rounded-lg"
             />
             <div className="p-4 max-md:hidden">
                 <div className="flex justify-between items-center">
-                    <span className="text-[#C68F00] font-medium">Coin</span>
+                    <span className="text-[#C68F00] font-medium">{nftName || "NFT"}</span>
                     <span className="text-[#C68F00] font-bold">{title}</span>
                 </div>
                 <div className="mt-2">
@@ -29,7 +29,7 @@ const ModalCard = ({ image, title, price }) => {
     );
 };
 
-const Modal = ({ isOpen, onClose, selectedCards, selectedCoins }) => {
+const Modal = ({ isOpen, onClose, selectedCards }) => {
     const [isMinting, setIsMinting] = useState(false);
     const [mintSuccess, setMintSuccess] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
@@ -233,6 +233,7 @@ const Modal = ({ isOpen, onClose, selectedCards, selectedCoins }) => {
                             key={index}
                             image={card.image}
                             title={card.title}
+                            nftName={card.nftName}
                             price={card.price}
                         />
                     ))}
@@ -240,8 +241,10 @@ const Modal = ({ isOpen, onClose, selectedCards, selectedCoins }) => {
 
                 <div className="p-2 w-full md:hidden">
                     <div className="flex justify-between items-center">
-                        <span className="text-[#C68F00] font-medium">Coin</span>
-                        <span className="text-[#C68F00] font-bold">{selectedCoins.join(', ')}</span>
+                        <span className="text-[#C68F00] font-medium">NFT</span>
+                        <span className="text-[#C68F00] font-bold">
+                            {selectedCards.map(card => card.nftName || card.title).join(', ')}
+                        </span>
                     </div>
                 </div>
                 

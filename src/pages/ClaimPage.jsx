@@ -16,7 +16,6 @@ function ClaimNFT() {
     const [isNftClicked, setIsNftClicked] = useState(false);
     const [selectedCards, setSelectedCards] = useState([]);
     const [isCardModalOpen, setIsCardModalOpen] = useState(false);
-    const [selectedCoins, setSelectedCoins] = useState([]);
     const [isError, _setIsError] = useState(false);
     const { isConnected } = useAccount();
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,9 +23,9 @@ function ClaimNFT() {
 
 
     const cards = [
-        { image: FoundingFlame, title: "#1", price: "0" },
-        { image: GoldenState, title: "#2", price: "0.01" },
-        { image: HorizonBuilder, title: "#3", price: "0.005" }
+        { image: FoundingFlame, title: "#1", nftName: "Founding Flame", price: "0" },
+        { image: GoldenState, title: "#2", nftName: "Golden State", price: "0.01" },
+        { image: HorizonBuilder, title: "#3", nftName: "Horizon Builder", price: "0.005" }
     ];
 
     const handleCardSelect = (index) => {
@@ -53,9 +52,6 @@ function ClaimNFT() {
     const handleClaim = () => {
         if (selectedCards.length > 0) {
             setIsCardModalOpen(true);
-            selectedCards.map(index => cards[index]).map((card) => {
-                setSelectedCoins(prev => [...prev, card.title]);
-            });
         }
     };
 
@@ -209,7 +205,6 @@ function ClaimNFT() {
                     isOpen={isCardModalOpen}
                     onClose={() => setIsCardModalOpen(false)}
                     selectedCards={selectedCards.map(index => cards[index])}
-                    selectedCoins={selectedCoins}
                 />
             </div>
             {isModalOpen && (

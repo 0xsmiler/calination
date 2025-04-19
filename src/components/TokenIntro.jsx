@@ -35,7 +35,7 @@ function TokenIntro() {
                 long-term growth potential.
               </p>
               <p className="block md:hidden text-[#00194B] text-[16px] leading-relaxed">
-                Fueling Social Change, One Token at a Timehe CaliNation Token
+                Fueling Social Change, One Token at a Time. The CaliNation Token
                 (CNT) isn’t just crypto — it’s a purpose-driven digital
                 asset.<br />Backed by real-world resources, including 3 mines in the
                 Congo, and tied to social reform, CNT fuels the Calexit

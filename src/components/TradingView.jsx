@@ -39,7 +39,7 @@ export const TradingView = () => {
             Unable to load chart on this device.
           </p>
           <a 
-            href="https://www.geckoterminal.com/base/pools/0x7605e676976f68d9cf14fe4475c5771e24ea4ce332fede246bd691c39491602b" 
+            href="https://www.geckoterminal.com/base/pools/0x5e73f39f4c3207c3d04498b1a25f5a896f63dfaa6b854ac14fe7433050963fe5" 
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2 bg-[#C68F00] text-white rounded hover:bg-[#C68F00]/80"
@@ -53,7 +53,7 @@ export const TradingView = () => {
           width="100%" 
           id="geckoterminal-embed" 
           title="GeckoTerminal Embed" 
-          src="https://www.geckoterminal.com/base/pools/0x7605e676976f68d9cf14fe4475c5771e24ea4ce332fede246bd691c39491602b?embed=1&info=0&swaps=0&grayscale=0&light_chart=0&chart_type=price&resolution=15m" 
+          src="https://www.geckoterminal.com/base/pools/0x5e73f39f4c3207c3d04498b1a25f5a896f63dfaa6b854ac14fe7433050963fe5?embed=1&info=0&swaps=0&grayscale=0&light_chart=0&chart_type=price&resolution=15m" 
           frameBorder="0" 
           allow="clipboard-write" 
           allowFullScreen

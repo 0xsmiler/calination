@@ -14,6 +14,9 @@ function Header({ transparent = false }) {
   // Whitepaper URL
   const whitepaperUrl = "https://u.pcloud.link/publink/show?code=XZknKQ5Zy5ElUpY1E6hXy6wAUNYWnYiq7Xvk";
 
+  // Load contact email from environment variable
+  const contactEmail = import.meta.env.VITE_CONTACT_EMAIL || 'info@thecalxtoken.com';
+
   // Add scroll event listener
   useEffect(() => {
     const handleScroll = () => {
@@ -91,7 +94,7 @@ function Header({ transparent = false }) {
             WHITEPAPER
           </a>
           <a
-            href="mailto:help@calinationtoken.com"
+            href={`mailto:${contactEmail}`}
             className={`${transparent ? "text-white" : "text-[#000000]"} hover:text-blue-300 text-[16px] font-medium`}
           >
             CONTACT US
@@ -161,7 +164,7 @@ function Header({ transparent = false }) {
               WHITEPAPER
             </a>
             <a
-              href="mailto:help@calinationtoken.com"
+              href={`mailto:${contactEmail}`}
               className="text-[#000000] hover:text-blue-800 text-[16px] font-medium py-2"
               onClick={() => setMobileMenuOpen(false)}
             >

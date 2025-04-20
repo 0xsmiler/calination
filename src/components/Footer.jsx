@@ -1,6 +1,9 @@
 import React from 'react'
 
 function Footer() {
+  // Load contact email from environment variable
+  const contactEmail = import.meta.env.VITE_CONTACT_EMAIL || 'info@thecalxtoken.com';
+  
   return (
     <footer className="bg-[#143B76] text-white py-12">
       <div className="container mx-auto px-6">
@@ -23,7 +26,7 @@ function Footer() {
               Terms of Service
             </a>
             <a 
-              href="mailto:help@calinationtoken.com" 
+              href={`mailto:${contactEmail}`}
               className="text-white hover:text-gray-300 transition"
             >
               Contact Us

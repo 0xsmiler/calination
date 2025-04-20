@@ -4,7 +4,7 @@ import { parseEther } from 'viem';
 import nftAbi from '../../contracts/nftAbi.json';
 
 // NFT Contract information from environment variables
-const contractAddress = import.meta.env.VITE_NFT_CONTRACT_ADDRESS;
+const contractAddress = import.meta.env.NFT_CONTRACT_ADDRESS;
 const contractAbi = nftAbi;
 
 const ModalCard = ({ image, title, nftName, price }) => {

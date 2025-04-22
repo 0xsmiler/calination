@@ -6,17 +6,26 @@ import { walletConnect, metaMask, coinbaseWallet } from '@wagmi/connectors';
 const projectId = import.meta.env.VITE_WALLET_CONNECT_PROJECT_ID;
 
 export const config = createConfig({
-  chains: [mainnet, base], // Add the chains you want to support
+  // Set Base as the first chain to prioritize it as the default
+  chains: [base, mainnet],
   transports: {
-    [mainnet.id]: http(),
     [base.id]: http(),
+    [mainnet.id]: http(),
   },
   connectors: [
     walletConnect({
       projectId,
-      showQrModal: true, // This will show the QR code modal like in your screenshot
+      showQrModal: true,
+      // Setting Base as the default chain (chainId 8453)
+      defaultChain: base,
     }),
-    metaMask(),
-    coinbaseWallet(),
+    metaMask({
+      // Setting Base as the default chain for MetaMask
+      defaultChain: base,
+    }),
+    coinbaseWallet({
+      // Setting Base as the default chain for Coinbase Wallet
+      defaultChain: base,
+    }),
   ],
 });

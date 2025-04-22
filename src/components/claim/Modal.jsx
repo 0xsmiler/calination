@@ -16,7 +16,7 @@ const ModalCard = ({ image, title, nftName, price }) => {
             <img
                 alt={nftName || `NFT ${title}`}
                 src={image}
-                className="w-full max-md:w-[250px] h-48 object-cover rounded-lg"
+                className="w-full object-contain max-md:w-[250px] h-48 rounded-lg"
             />
             <div className="p-4 max-md:hidden">
                 <div className="flex justify-between items-center">

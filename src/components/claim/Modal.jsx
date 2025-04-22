@@ -4,8 +4,11 @@ import { parseEther } from 'viem';
 import nftAbi from '../../contracts/nftAbi.json';
 
 // NFT Contract information from environment variables
-const contractAddress = import.meta.env.NFT_CONTRACT_ADDRESS;
+const contractAddress = import.meta.env.VITE_NFT_CONTRACT_ADDRESS;
 const contractAbi = nftAbi;
+
+// Debug log for contract address
+console.log(`Using NFT contract address: ${contractAddress || 'UNDEFINED'}`);
 
 const ModalCard = ({ image, title, nftName, price }) => {
     return (
@@ -94,8 +97,21 @@ const Modal = ({ isOpen, onClose, selectedCards }) => {
             return;
         }
 
+        if (!contractAddress) {
+            console.error("Contract address is undefined");
+            setErrorMessage("Contract address is not configured properly");
+            return;
+        }
+
         setIsMinting(true);
         setErrorMessage("");
+
+        console.log("Starting claim process with:", {
+            contractAddress,
+            selectedCards,
+            userAddress: address,
+            nftIds: selectedCards.map(card => getNftId(card.title))
+        });
 
         try {
             // Check if user already owns any of the selected NFTs
@@ -166,6 +182,7 @@ const Modal = ({ isOpen, onClose, selectedCards }) => {
     // Update state based on transaction status
     useEffect(() => {
         if (isSuccess) {
+            console.log("Transaction successful!");
             setMintSuccess(true);
             setIsMinting(false);
         }
@@ -175,6 +192,7 @@ const Modal = ({ isOpen, onClose, selectedCards }) => {
             // Enhanced error logging
             console.error("Transaction Error:", error);
             console.error("Error Details:", {
+                contractAddress,
                 selectedCards,
                 nftIds: selectedCards.map(card => getNftId(card.title)),
                 calculatedValue: calculateTotalValue(),
@@ -201,7 +219,7 @@ const Modal = ({ isOpen, onClose, selectedCards }) => {
                 setErrorMessage("Transaction failed: " + errorMsg.slice(0, 100));
             }
         }
-    }, [isSuccess, isError, error]);
+    }, [isSuccess, isError, error, contractAddress]);
 
     const handleCancel = () => {
         setMintSuccess(false);

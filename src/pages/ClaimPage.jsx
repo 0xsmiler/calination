@@ -9,7 +9,8 @@ import GoldenState from '../assets/thumb_golden state.png'
 import HorizonBuilder from '../assets/thumb_horizon bulider.png'
 import Header from '../components/Header'
 import BuyCNTBtn from '../components/BuyCNTBtn'
-import { useAccount, useConnect } from "wagmi";
+import { useAccount, useConnect, useChainId, useSwitchChain } from "wagmi";
+import { base } from 'wagmi/chains';
 import WalletModal from "../components/WalletModal";
 
 function ClaimNFT() {
@@ -20,13 +21,22 @@ function ClaimNFT() {
     const { isConnected } = useAccount();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const { connect, connectors, error, isLoading } = useConnect();
-
+    const chainId = useChainId();
+    const { switchChain } = useSwitchChain();
 
     const cards = [
         { image: FoundingFlame, title: "#1", nftName: "Founding Flame", price: "0" },
         { image: GoldenState, title: "#2", nftName: "Golden State", price: "0.01" },
         { image: HorizonBuilder, title: "#3", nftName: "Horizon Builder", price: "0.005" }
     ];
+
+    // Switch to Base network if connected but on a different network
+    useEffect(() => {
+        if (isConnected && chainId && chainId !== base.id && switchChain) {
+            // Switch to Base network automatically when connected but on wrong network
+            switchChain({ chainId: base.id });
+        }
+    }, [isConnected, chainId, switchChain]);
 
     const handleCardSelect = (index) => {
         if (!isConnected) return; // Prevent selection if wallet is not connected

@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useAccount, useConnect, useDisconnect } from 'wagmi';
+import { useAccount, useConnect, useDisconnect, useChainId, useSwitchChain } from 'wagmi';
+import { base } from 'wagmi/chains';
 import WalletModal from './WalletModal';
 
 function Header({ transparent = false }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { address, isConnected } = useAccount();
-  const { connect, connectors, error, isLoading } = useConnect();
+  const { connect, connectors, error: connectError, isLoading: isConnectLoading } = useConnect();
   const { disconnect } = useDisconnect();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const chainId = useChainId();
+  const { switchChain } = useSwitchChain();
 
   // Whitepaper URL
   const whitepaperUrl = "https://u.pcloud.link/publink/show?code=XZknKQ5Zy5ElUpY1E6hXy6wAUNYWnYiq7Xvk";
@@ -35,13 +38,20 @@ function Header({ transparent = false }) {
     };
   }, []);
 
+  // Switch to Base network if connected but on a different network
+  useEffect(() => {
+    if (isConnected && chainId && chainId !== base.id && switchChain) {
+      // Switch to Base network automatically when connected but on wrong network
+      switchChain({ chainId: base.id });
+    }
+  }, [isConnected, chainId, switchChain]);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
   const handleConnect = (connector) => {
-    connect({ connector }); // Simply call connect without chaining
+    connect({ connector });
   };
 
   // Use useEffect to close the modal when the connection is successful
@@ -50,7 +60,6 @@ function Header({ transparent = false }) {
       setIsModalOpen(false); // Close the modal when the wallet is connected
     }
   }, [isConnected, isModalOpen]);
-
 
   return (
     <header
@@ -190,7 +199,7 @@ function Header({ transparent = false }) {
       )}
       {/* Mobile menu dropdown */}
       {isModalOpen && (
-        <WalletModal connectors={connectors} handleConnect={handleConnect} isLoading={isLoading} error={error} setIsModalOpen={setIsModalOpen} />
+        <WalletModal connectors={connectors} handleConnect={handleConnect} isLoading={isConnectLoading} error={connectError} setIsModalOpen={setIsModalOpen} />
       )}
     </header>
   );

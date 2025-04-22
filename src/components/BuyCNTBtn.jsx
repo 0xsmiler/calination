@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useAccount, useConnect } from "wagmi";
+import { useAccount, useConnect, useChainId, useSwitchChain } from "wagmi";
+import { base } from 'wagmi/chains';
 import WalletModal from "./WalletModal";
 
 function BuyCNTBtn() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const { isConnected } = useAccount();
     const { connect, connectors, error, isLoading } = useConnect();
+    const chainId = useChainId();
+    const { switchChain } = useSwitchChain();
 
     const uniswapUrl = "https://app.uniswap.org/explore/pools/base/0x5e73f39f4c3207c3d04498b1a25f5a896f63dfaa6b854ac14fe7433050963fe5";
 
@@ -29,6 +32,14 @@ function BuyCNTBtn() {
             setIsModalOpen(false);
         }
     }, [isConnected, isModalOpen]);
+
+    // Switch to Base network if connected but on a different network
+    useEffect(() => {
+        if (isConnected && chainId && chainId !== base.id && switchChain) {
+            // Switch to Base network automatically when connected but on wrong network
+            switchChain({ chainId: base.id });
+        }
+    }, [isConnected, chainId, switchChain]);
 
     return (
         <div className="mt-16 flex justify-center">

@@ -25,9 +25,9 @@ function ClaimNFT() {
     const { switchChain } = useSwitchChain();
 
     const cards = [
-        { image: FoundingFlame, title: "#1", nftName: "Founding Flame", price: "0" },
+        { image: HorizonBuilder, title: "#1", nftName: "Horizon Builder", price: "0" },
         { image: GoldenState, title: "#2", nftName: "Golden State", price: "0.01" },
-        { image: HorizonBuilder, title: "#3", nftName: "Horizon Builder", price: "0.005" }
+        { image: FoundingFlame, title: "#3", nftName: "Founding Flame", price: "0.005" }
     ];
 
     // Switch to Base network if connected but on a different network

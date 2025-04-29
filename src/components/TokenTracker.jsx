@@ -3,7 +3,7 @@ import TradingViewWidget from './TradingView'
 
 function TokenTracker() {
   // Define the URLs for the links
-  const uniswapUrl = "https://app.uniswap.org/explore/pools/base/0x5e73f39f4c3207c3d04498b1a25f5a896f63dfaa6b854ac14fe7433050963fe5";
+  const uniswapUrl = "https://app.uniswap.org/swap?chain=base&inputCurrency=0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913&outputCurrency=0xEe6603c1F8A8616Ee1038067fb7d6049bC992592";
   const baseswapUrl = "https://baseswap.fi/swap";
   const whitepaperUrl = "https://u.pcloud.link/publink/show?code=XZknKQ5Zy5ElUpY1E6hXy6wAUNYWnYiq7Xvk";
 

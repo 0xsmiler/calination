@@ -12,14 +12,9 @@ function BuyCNTBtn() {
 
     const uniswapUrl = "https://app.uniswap.org/swap?chain=base&inputCurrency=0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913&outputCurrency=0xEe6603c1F8A8616Ee1038067fb7d6049bC992592";
 
-    const handleBuyOrConnect = () => {
-        if (isConnected) {
-            // Wallet is connected, open Uniswap link
-            window.open(uniswapUrl, '_blank', 'noopener,noreferrer');
-        } else {
-            // Wallet not connected, open connect modal
-            setIsModalOpen(true);
-        }
+    const handleBuyClick = () => {
+        // Always open Uniswap URL directly, regardless of wallet connection status
+        window.open(uniswapUrl, '_blank', 'noopener,noreferrer');
     };
 
     const handleWalletConnect = (connector) => {
@@ -45,7 +40,7 @@ function BuyCNTBtn() {
         <div className="mt-16 flex justify-center">
             <button
                 className="bg-[#C68F00] hover:bg-[#b07e00] text-white font-semibold text-lg px-[80px] py-[20px] rounded-md transition"
-                onClick={handleBuyOrConnect}
+                onClick={handleBuyClick}
             >
                 Buy CNT
             </button>

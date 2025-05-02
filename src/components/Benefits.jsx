@@ -6,7 +6,7 @@ import networkIcon from '../assets/network-icon.png'
 import rocketIcon from '../assets/rocket-icon.png'
 
 // Import the same URL used in the BuyCNTBtn component
-const uniswapUrl = "https://app.uniswap.org/explore/pools/base/0x086c01cd7891e8aed5fd27c01dcca6081b30318203aec3474c47464c030d9492";
+const uniswapUrl = "https://app.uniswap.org/swap?chain=base&inputCurrency=0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913&outputCurrency=0xEe6603c1F8A8616Ee1038067fb7d6049bC992592 ";
 
 function Benefits() {
   const benefitsList = [
